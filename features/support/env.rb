@@ -17,6 +17,15 @@ module Browser
     block.call page if block
     page
   end
+
+  def photo_url slug
+    "http://localhost:9292/#{slug}"
+  end
+
+  def goto url
+    BROWSER.goto(url)
+    raise 'Page Not Found' if BROWSER.body.text == 'Not Found'
+  end
 end
 
 World Browser

@@ -3,7 +3,7 @@ When /^I visit the home page$/ do
 end
 
 When /^I view that photo$/ do
-    pending # express the regexp above with the code you wish you had
+    goto(photo_url(@photo['slug']))
 end
 
 When /^I navigate to the category$/ do
