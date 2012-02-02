@@ -7,4 +7,5 @@ group :developmen do
   gem 'rspec'
   gem 'cucumber'
   gem 'watir-page-helper'
+  gem 'pry'
 end

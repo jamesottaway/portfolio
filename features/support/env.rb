@@ -2,6 +2,7 @@ WEB_DRIVER = (ENV['WEB_DRIVER'] || :firefox).to_sym
 
 require 'watir-webdriver'
 require 'watir-page-helper'
+require 'pry'
 require_relative 'pages'
 
 module Browser
