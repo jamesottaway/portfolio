@@ -3,7 +3,9 @@ Given /^I have a bunch of photos$/ do
 end
 
 Given /^I have a photo$/ do
-    pending
+    @photo = {'title' => 'My Photo', 'src' => 'http://portfolio/my_photo', 'slug' => 'my_photo'}
+    portfolio = {'photos' => [@photo]}
+    File.open('portfolio.yml', 'w') { |f| f.write(portfolio.to_yaml) }
 end
 
 Then /^I should see my photos$/ do
