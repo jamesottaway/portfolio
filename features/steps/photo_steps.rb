@@ -12,10 +12,10 @@ Then /^I should see my photos$/ do
     pending
 end
 
-Then /^I should see the photo$/ do
-    pending
-end
-
 Then /^I should see my photo$/ do
-    pending
+  on(:photo) do |page|
+    page.browser.title.should =~ /^#{@photo['title']}/
+    page.title.should == @photo['title']
+    page.photo.src.should == @photo['src']
+  end
 end

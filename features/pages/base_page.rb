@@ -11,4 +11,8 @@ class BasePage
   def method_missing sym, *args, &block
     @browser.send sym, *args, &block
   end
+
+  def browser
+    @browser
+  end
 end
