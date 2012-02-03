@@ -1,7 +1,8 @@
 $: << File.dirname(__FILE__)+'/..'
 
-require 'portfolio'
 require 'yaml'
+require 'portfolio'
+require 'portfolio/photo'
 
 class Portfolio::Data
   attr_reader :photos
@@ -12,5 +13,9 @@ class Portfolio::Data
     yaml['photos'].each do |photo|
       @photos << Photo.new(photo['title'], photo['src'], photo['slug'])
     end
+  end
+
+  def find_by_slug slug
+    @photos.select { |photo| photo.slug == slug }.first
   end
 end

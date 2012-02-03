@@ -20,4 +20,12 @@ describe Portfolio::Data do
       its(:slug) { should be photo['slug'] }
     end
   end
+
+  describe '#find_by_slug' do
+    subject { Portfolio::Data.new.find_by_slug(photo['slug']) }
+
+    its(:title) { should be photo['title'] }
+    its(:src) { should be photo['src'] }
+    its(:slug) { should be photo['slug'] }
+  end
 end
