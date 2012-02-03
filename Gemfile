@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'sinatra'
+gem 'slim'
 
 group :developmen do
   gem 'rake'
