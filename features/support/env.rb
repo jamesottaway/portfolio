@@ -19,8 +19,8 @@ module Browser
     page
   end
 
-  def photo_url slug
-    "http://localhost:9292/#{slug}"
+  def photo_url id
+    "http://localhost:9292/#{id}"
   end
 
   def goto url

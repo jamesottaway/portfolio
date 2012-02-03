@@ -11,11 +11,11 @@ class Portfolio::Data
     yaml = YAML.load_file('portfolio.yml')
     @photos = []
     yaml['photos'].each do |photo|
-      @photos << Photo.new(photo['title'], photo['src'], photo['slug'])
+      @photos << Photo.new(photo['title'], photo['src'], photo['id'])
     end
   end
 
-  def find_by_slug slug
-    @photos.select { |photo| photo.slug == slug }.first
+  def find_by_id id
+    @photos.select { |photo| photo.id == id }.first
   end
 end

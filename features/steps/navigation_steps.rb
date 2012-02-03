@@ -3,7 +3,7 @@ When /^I visit the home page$/ do
 end
 
 When /^I view that photo$/ do
-    goto(photo_url(@photo['slug']))
+    goto(photo_url(@photo['id']))
 end
 
 When /^I navigate to the category$/ do
