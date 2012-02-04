@@ -1,4 +1,4 @@
 class PhotoPage < BasePage
-  span :title, :id => 'title'
+  h1 :title, :id => 'title'
   image :photo, :id => 'photo'
 end

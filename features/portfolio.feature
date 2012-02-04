@@ -9,7 +9,6 @@ Feature:
     When I visit the home page
     Then I should see my photos
 
-  @wip
   Scenario:
     Given I have a photo
     When I view that photo
