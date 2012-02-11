@@ -1,5 +1,7 @@
 When /^I visit the home page$/ do
-    visit :home
+    visit :home do |page|
+    	page.visit_category @photo['category']
+    end
 end
 
 When /^I view that photo$/ do
