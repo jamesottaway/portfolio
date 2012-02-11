@@ -16,14 +16,7 @@ Feature:
 
   @wip
   Scenario:
-    Given I have a category
-    When I visit the home page
-    Then I should see the category
-
-  @wip
-  Scenario:
-    Given I have a category
-    And I have a photo in that category
+    Given I have a photo
     When I visit the home page
     And I navigate to the category
     Then I should see my photo
