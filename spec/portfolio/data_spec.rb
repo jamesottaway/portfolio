@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Portfolio::Data do
-  let(:photo) { {'title' => 'Photo Title', 'src' => 'photo_src', 'id' => 'photo_id'} }
+  let(:photo) { {'title' => 'Photo Title', 'src' => 'photo_src', 'id' => 'photo_id', 'category' => 'Scenic'} }
 
   before do
     YAML.should_receive(:load_file).with('portfolio.yml').and_return({'photos' => [photo]})
@@ -18,6 +18,7 @@ describe Portfolio::Data do
       its(:title) { should be photo['title'] }
       its(:src) { should be photo['src'] }
       its(:id) { should be photo['id'] }
+      its(:category) { should be photo['category'] }
     end
   end
 
@@ -27,5 +28,6 @@ describe Portfolio::Data do
     its(:title) { should be photo['title'] }
     its(:src) { should be photo['src'] }
     its(:id) { should be photo['id'] }
+    its(:category) { should be photo['category'] }
   end
 end
