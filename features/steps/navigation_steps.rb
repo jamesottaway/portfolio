@@ -1,5 +1,5 @@
 When /^I visit the home page$/ do
-    pending # express the regexp above with the code you wish you had
+    visit :home
 end
 
 When /^I view that photo$/ do
