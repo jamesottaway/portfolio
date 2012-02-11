@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe Portfolio::Data do
   let(:photo) { {'title' => 'Photo Title', 'src' => 'photo_src', 'id' => 'photo_id', 'category' => 'Scenic'} }
+  let(:photos) { { 'photos' => [photo] } }
 
   before do
-    YAML.should_receive(:load_file).with('portfolio.yml').and_return({'photos' => [photo]})
+    YAML.should_receive(:load_file).with('portfolio.yml').and_return(photos)
   end
 
   describe '#photos' do
@@ -32,8 +33,11 @@ describe Portfolio::Data do
   end
 
   describe '#categories' do
+    let(:photos) { {'photos' => [{'category' => 'ABC'}, {'category' => 'ABC'}]} }
+
     subject { Portfolio::Data.new.categories }
 
-    its(:first) { should == photo['category'] }
+    its(:first) { should == 'ABC' }
+    its(:size) { should == 1 }
   end
 end

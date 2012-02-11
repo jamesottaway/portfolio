@@ -17,6 +17,7 @@ class Portfolio::Data
     yaml['photos'].each do |photo|
       @categories << photo['category']
     end
+    @categories.uniq!
   end
 
   def find_by_id id
