@@ -30,4 +30,10 @@ describe Portfolio::Data do
     its(:id) { should be photo['id'] }
     its(:category) { should be photo['category'] }
   end
+
+  describe '#categories' do
+    subject { Portfolio::Data.new.categories }
+
+    its(:first) { should == photo['category'] }
+  end
 end
