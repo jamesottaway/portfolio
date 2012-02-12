@@ -6,10 +6,10 @@ describe Portfolio::Data do
   let(:photo) { mock 'Photo' }
 
   before { YAML.should_receive(:load_file).with('portfolio.yml').and_return(photos) }
-  before { Photo.stub(:new).and_return(photo) }
+  before { Portfolio::Photo.stub(:new).and_return(photo) }
 
   describe 'photo-related methods' do
-    before { Photo.should_receive(:new).with(input_photo['title'], input_photo['src'], input_photo['id'], input_photo['category']).and_return(photo) }
+    before { Portfolio::Photo.should_receive(:new).with(input_photo['title'], input_photo['src'], input_photo['id'], input_photo['category']).and_return(photo) }
 
     describe '#photos' do
       subject { Portfolio::Data.new.photos }

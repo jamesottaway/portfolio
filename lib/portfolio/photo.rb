@@ -2,5 +2,5 @@ $: << File.dirname(__FILE__)+'/..'
 
 require 'portfolio'
 
-class Photo < Struct.new(:title, :src, :id, :category)
+class Portfolio::Photo < Struct.new(:title, :src, :id, :category)
 end

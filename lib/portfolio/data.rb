@@ -11,7 +11,7 @@ class Portfolio::Data
     yaml = YAML.load_file('portfolio.yml')
     @photos = []
     yaml['photos'].each do |photo|
-      @photos << Photo.new(photo['title'], photo['src'], photo['id'], photo['category'])
+      @photos << Portfolio::Photo.new(photo['title'], photo['src'], photo['id'], photo['category'])
     end
     @categories = []
     yaml['photos'].each do |photo|

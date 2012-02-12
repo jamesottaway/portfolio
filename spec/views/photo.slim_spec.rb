@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'photo.slim' do
-  let(:photo) { Photo.new 'title', 'http://src/' }
+  let(:photo) { Portfolio::Photo.new 'title', 'http://src/' }
 
   subject { render 'photo.slim', :@photo => photo }
 
