@@ -1,43 +1,39 @@
 require 'spec_helper'
 
 describe Portfolio::Data do
-  let(:photo) { {'title' => 'Photo Title', 'src' => 'photo_src', 'id' => 'photo_id', 'category' => 'Scenic'} }
-  let(:photos) { { 'photos' => [photo] } }
+  let(:input_photo) { {'title' => 'Photo Title', 'src' => 'photo_src', 'id' => 'photo_id', 'category' => 'Scenic'} }
+  let(:photos) { { 'photos' => [input_photo] } }
+  let(:photo) { mock 'Photo' }
 
-  before do
-    YAML.should_receive(:load_file).with('portfolio.yml').and_return(photos)
-  end
+  before { YAML.should_receive(:load_file).with('portfolio.yml').and_return(photos) }
+  before { Photo.stub(:new).and_return(photo) }
 
-  describe '#photos' do
-    subject { Portfolio::Data.new.photos }
+  describe 'photo-related methods' do
+    before { Photo.should_receive(:new).with(input_photo['title'], input_photo['src'], input_photo['id'], input_photo['category']).and_return(photo) }
 
-    its(:size) { should be 1 }
+    describe '#photos' do
+      subject { Portfolio::Data.new.photos }
 
-    describe 'photo' do
-      subject { Portfolio::Data.new.photos.first }
+      its(:first) { should == photo }
+    end
 
-      its(:title) { should be photo['title'] }
-      its(:src) { should be photo['src'] }
-      its(:id) { should be photo['id'] }
-      its(:category) { should be photo['category'] }
+    describe '#find_by_id' do
+      before { photo.stub(:id).and_return input_photo['id'] }
+
+      subject { Portfolio::Data.new.find_by_id(input_photo['id']) }
+
+      it { should == photo }
     end
   end
 
-  describe '#find_by_id' do
-    subject { Portfolio::Data.new.find_by_id(photo['id']) }
+  describe 'category-related methods' do
+    describe '#categories' do
+      let(:photos) { {'photos' => [{'category' => 'ABC'}, {'category' => 'ABC'}]} }
+      
+      subject { Portfolio::Data.new.categories }
 
-    its(:title) { should be photo['title'] }
-    its(:src) { should be photo['src'] }
-    its(:id) { should be photo['id'] }
-    its(:category) { should be photo['category'] }
-  end
-
-  describe '#categories' do
-    let(:photos) { {'photos' => [{'category' => 'ABC'}, {'category' => 'ABC'}]} }
-
-    subject { Portfolio::Data.new.categories }
-
-    its(:first) { should == 'ABC' }
-    its(:size) { should == 1 }
+      its(:first) { should == 'ABC' }
+      its(:size) { should == 1 }
+    end
   end
 end
