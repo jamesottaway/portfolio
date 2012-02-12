@@ -15,7 +15,7 @@ class Portfolio::Data
     end
     @categories = []
     yaml['photos'].each do |photo|
-      @categories << photo['category']
+      @categories << Portfolio::Category.new(photo['category'])
     end
     @categories.uniq!
   end

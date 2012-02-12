@@ -29,10 +29,13 @@ describe Portfolio::Data do
   describe 'category-related methods' do
     describe '#categories' do
       let(:photos) { {'photos' => [{'category' => 'ABC'}, {'category' => 'ABC'}]} }
-      
+      let(:category) { mock 'Category' }
+
+      before { Portfolio::Category.should_receive(:new).twice.with('ABC').and_return(category) }
+
       subject { Portfolio::Data.new.categories }
 
-      its(:first) { should == 'ABC' }
+      its(:first) { should == category }
       its(:size) { should == 1 }
     end
   end
