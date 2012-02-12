@@ -27,16 +27,24 @@ describe Portfolio::Data do
   end
 
   describe 'category-related methods' do
+    let(:category_name) { 'ABC 123' }
+    let(:category_slug) { 'abc_123' }
+    let(:photos) { {'photos' => [{'category' => category_name}, {'category' => category_name}]} }
+    let(:category) { mock 'Category', :slug => category_slug }
+
+    before { Portfolio::Category.should_receive(:new).twice.with(category_name).and_return(category) }
+
     describe '#categories' do
-      let(:photos) { {'photos' => [{'category' => 'ABC'}, {'category' => 'ABC'}]} }
-      let(:category) { mock 'Category' }
-
-      before { Portfolio::Category.should_receive(:new).twice.with('ABC').and_return(category) }
-
       subject { Portfolio::Data.new.categories }
 
       its(:first) { should == category }
       its(:size) { should == 1 }
+    end
+
+    describe '#find_by_slug' do
+      subject { Portfolio::Data.new.find_by_slug category_slug }
+
+      it { should == category }
     end
   end
 end

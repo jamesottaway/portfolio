@@ -27,4 +27,8 @@ class Portfolio::Data
   def categories
     @categories
   end
+
+  def find_by_slug slug
+    @categories.select { |category| category.slug == slug }.first
+  end
 end
