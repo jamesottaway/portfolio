@@ -3,6 +3,7 @@ $: << File.dirname(__FILE__)+'/..'
 require 'yaml'
 require 'portfolio'
 require 'portfolio/photo'
+require 'portfolio/category'
 
 class Portfolio::Data
   attr_reader :photos, :categories
