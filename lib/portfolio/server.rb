@@ -16,6 +16,7 @@ class Portfolio::Server < Sinatra::Base
   get '/:id' do
     data = Portfolio::Data.new
     @photo = data.find_by_id(params[:id])
+    @title = @photo.title
     slim :photo
   end
 end

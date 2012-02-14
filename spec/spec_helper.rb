@@ -11,9 +11,9 @@ RSpec.configure do |config|
     config.mock_with :rspec
 end
 
-def render template_path, locals={}
+def render template_path, locals={}, inner=nil
   template = File.read(File.join(File.dirname(__FILE__), '../lib/portfolio/views', template_path))
-  Slim::Template.new() { template }.render(self, locals)
+  Slim::Template.new { template }.render(self, locals) { inner }
 end
 
 def to_slug title
