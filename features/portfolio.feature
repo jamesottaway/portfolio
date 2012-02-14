@@ -18,5 +18,5 @@ Feature:
   Scenario:
     Given I have a photo
     When I visit the home page
-    And I navigate to the category
+    And I navigate to a category
     Then I should see my photo
