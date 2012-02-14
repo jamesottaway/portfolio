@@ -15,3 +15,7 @@ def render template_path, locals={}
   template = File.read(File.join(File.dirname(__FILE__), '../lib/portfolio/views', template_path))
   Slim::Template.new() { template }.render(self, locals)
 end
+
+def to_slug title
+  title.downcase.gsub(' ', '_')
+end

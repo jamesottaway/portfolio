@@ -10,6 +10,18 @@ class Portfolio::Category
 		self.slug = to_slug(title)
 	end
 
+	def hash
+		self.title.hash
+	end
+
+	def eql? other
+		self.title == other.title
+	end
+
+	def == other
+		eql? other
+	end
+
 	private
 
 	def to_slug title

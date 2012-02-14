@@ -1,50 +1,50 @@
 require 'spec_helper'
 
 describe Portfolio::Data do
-  let(:input_photo) { {'title' => 'Photo Title', 'src' => 'photo_src', 'id' => 'photo_id', 'category' => 'Scenic'} }
-  let(:photos) { { 'photos' => [input_photo] } }
-  let(:photo) { mock 'Photo' }
+  first_photo = {'title' => 'First Photo', 'src' => 'photo_src_1', 'id' => 'photo_1', 'category' => 'Scenic'}
+  second_photo = {'title' => 'Second Photo', 'src' => 'photo_src_2', 'id' => 'photo_2', 'category' => 'Scenic'}
+  other_photo = {'title' => 'Other Photo', 'src' => 'photo_src_other', 'id' => 'photo_other', 'category' => 'Other'}
+
+  photos = { 'photos' => [first_photo, second_photo, other_photo] }
 
   before { YAML.should_receive(:load_file).with('portfolio.yml').and_return(photos) }
-  before { Portfolio::Photo.stub(:new).and_return(photo) }
 
-  describe 'photo-related methods' do
-    before { Portfolio::Photo.should_receive(:new).with(input_photo['title'], input_photo['src'], input_photo['id'], input_photo['category']).and_return(photo) }
-
+  describe 'photo-related methods ' do
     describe '#photos' do
       subject { Portfolio::Data.new.photos }
 
-      its(:first) { should == photo }
+      its(:size) { should == 3 }
     end
 
     describe '#find_by_id' do
-      before { photo.stub(:id).and_return input_photo['id'] }
+      photos['photos'].each do |photo|
+        describe photo['id'] do
+          subject { Portfolio::Data.new.find_by_id(photo['id']) }
 
-      subject { Portfolio::Data.new.find_by_id(input_photo['id']) }
-
-      it { should == photo }
+          its(:title) { should == photo['title'] }
+          its(:src) { should == photo['src'] }
+          its(:id) { should == photo['id'] }
+          its(:category) { should == photo['category'] }
+        end
+      end
     end
   end
 
-  describe 'category-related methods' do
-    let(:category_name) { 'ABC 123' }
-    let(:category_slug) { 'abc_123' }
-    let(:photos) { {'photos' => [{'category' => category_name}, {'category' => category_name}]} }
-    let(:category) { mock 'Category', :slug => category_slug }
-
-    before { Portfolio::Category.should_receive(:new).twice.with(category_name).and_return(category) }
-
+  describe 'category-related methods ' do
     describe '#categories' do
       subject { Portfolio::Data.new.categories }
 
-      its(:first) { should == category }
-      its(:size) { should == 1 }
+      its(:size) { should == 2 }
     end
 
     describe '#find_by_slug' do
-      subject { Portfolio::Data.new.find_by_slug category_slug }
+      photos['photos'].map { |photo| Portfolio::Category.new(photo['category']) }.each do |category|
+        describe category.slug do
+          subject { Portfolio::Data.new.find_by_slug(category.slug) }
 
-      it { should == category }
+          its(:title) { should == category.title }
+        end
+      end
     end
   end
 end
