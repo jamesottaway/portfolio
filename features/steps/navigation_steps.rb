@@ -10,4 +10,7 @@ When /^I navigate to a category$/ do
     on :home do |page|
     	page.visit_category @photo['category']
     end
+    on(:category) do |page|
+    	page.title.should == @photo['category']
+    end
 end

@@ -1,0 +1,2 @@
+class CategoryPage < BasePage
+end

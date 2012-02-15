@@ -10,7 +10,9 @@ class Portfolio::Server < Sinatra::Base
   set :views, File.dirname(__FILE__)+'/views'
 
   get '/' do
-    'Main directory page'
+    data = Portfolio::Data.new
+    @categories = data.categories
+    slim :home
   end
 
   get '/:id' do
