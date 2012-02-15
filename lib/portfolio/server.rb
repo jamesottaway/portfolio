@@ -21,4 +21,11 @@ class Portfolio::Server < Sinatra::Base
     @title = @photo.title
     slim :photo
   end
+
+  get '/category/:slug' do
+    data = Portfolio::Data.new
+    @category = data.find_by_slug(params[:slug])
+    @title = @category.title
+    slim :category
+  end
 end
