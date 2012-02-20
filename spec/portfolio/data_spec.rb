@@ -28,6 +28,26 @@ describe Portfolio::Data do
         end
       end
     end
+
+    describe '#find_by_category' do
+      describe 'Scenic' do
+        subject { Portfolio::Data.new.find_by_category('Scenic') }
+
+        its(:size) { should == 2 }
+
+        describe '#first' do
+          subject { Portfolio::Data.new.find_by_category('Scenic').first }
+
+          its(:title) { should == first_photo['title'] }
+        end
+
+        describe '#last' do
+          subject { Portfolio::Data.new.find_by_category('Scenic').last }
+
+          its(:title) { should == second_photo['title'] }
+        end
+      end
+    end
   end
 
   describe 'category-related methods ' do

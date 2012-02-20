@@ -25,6 +25,10 @@ class Portfolio::Data
     @photos.select { |photo| photo.id == id }.first
   end
 
+  def find_by_category category
+    @photos.select { |photo| photo.category == category }
+  end
+
   def categories
     @categories
   end
