@@ -27,6 +27,10 @@ module Browser
     BROWSER.goto(url)
     raise 'Page Not Found' if BROWSER.body.text == 'Not Found'
   end
+
+  def photos_for_category category
+    @portfolio['photos'].select { |photo| photo['category'] == category }
+  end
 end
 
 World Browser

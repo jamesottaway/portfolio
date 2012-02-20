@@ -19,4 +19,4 @@ Feature:
     Given I have a photo
     When I visit the home page
     And I navigate to a category
-    Then I should see my photo
+    Then I should see the photos in the category
