@@ -26,6 +26,7 @@ class Portfolio::Server < Sinatra::Base
     data = Portfolio::Data.new
     @category = data.find_by_slug(params[:slug])
     @title = @category.title
+    @photos = data.find_by_category @category.title
     slim :category
   end
 end

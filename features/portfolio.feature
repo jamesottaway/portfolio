@@ -14,7 +14,6 @@ Feature:
     When I view that photo
     Then I should see my photo
 
-  @wip
   Scenario:
     Given I have a photo
     When I visit the home page
