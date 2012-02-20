@@ -14,7 +14,7 @@ end
 
 Then /^I should see my photo$/ do
   on(:photo) do |page|
-    page.browser.title.should =~ /^#{@photo['title']}/
+    browser.title.should =~ /^#{@photo['title']}/
     page.title.should == @photo['title']
     page.photo.src.should == @photo['src']
   end

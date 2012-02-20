@@ -11,7 +11,7 @@ When /^I navigate to a category$/ do
     	page.visit_category @photo['category']
     end
     on(:category) do |page|
-    	page.browser.title.should == @photo['category']
+    	browser.title.should == @photo['category']
     	page.title.should == @photo['category']
     end
 end

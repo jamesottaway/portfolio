@@ -31,6 +31,10 @@ module Browser
   def photos_for_category category
     @portfolio['photos'].select { |photo| photo['category'] == category }
   end
+
+  def browser
+    BROWSER
+  end
 end
 
 World Browser
