@@ -17,16 +17,16 @@ class Portfolio::Server < Sinatra::Base
 
   get '/:id' do
     data = Portfolio::Data.new
-    @photo = data.find_by_id(params[:id])
+    @photo = data.find_photo_by_id(params[:id])
     @title = @photo.title
     slim :photo
   end
 
   get '/category/:slug' do
     data = Portfolio::Data.new
-    @category = data.find_by_slug(params[:slug])
+    @category = data.find_category_by_slug(params[:slug])
     @title = @category.title
-    @photos = data.find_by_category @category.title
+    @photos = data.find_photos_by_category @category.title
     slim :category
   end
 end

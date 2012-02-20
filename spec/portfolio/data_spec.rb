@@ -16,10 +16,10 @@ describe Portfolio::Data do
       its(:size) { should == 3 }
     end
 
-    describe '#find_by_id' do
+    describe '#find_photo_by_id' do
       photos['photos'].each do |photo|
         describe photo['id'] do
-          subject { Portfolio::Data.new.find_by_id(photo['id']) }
+          subject { Portfolio::Data.new.find_photo_by_id(photo['id']) }
 
           its(:title) { should == photo['title'] }
           its(:src) { should == photo['src'] }
@@ -29,20 +29,20 @@ describe Portfolio::Data do
       end
     end
 
-    describe '#find_by_category' do
+    describe '#find_photos_by_category' do
       describe 'Scenic' do
-        subject { Portfolio::Data.new.find_by_category('Scenic') }
+        subject { Portfolio::Data.new.find_photos_by_category('Scenic') }
 
         its(:size) { should == 2 }
 
         describe '#first' do
-          subject { Portfolio::Data.new.find_by_category('Scenic').first }
+          subject { Portfolio::Data.new.find_photos_by_category('Scenic').first }
 
           its(:title) { should == first_photo['title'] }
         end
 
         describe '#last' do
-          subject { Portfolio::Data.new.find_by_category('Scenic').last }
+          subject { Portfolio::Data.new.find_photos_by_category('Scenic').last }
 
           its(:title) { should == second_photo['title'] }
         end
@@ -57,10 +57,10 @@ describe Portfolio::Data do
       its(:size) { should == 2 }
     end
 
-    describe '#find_by_slug' do
+    describe '#find_category_by_slug' do
       photos['photos'].map { |photo| Portfolio::Category.new(photo['category']) }.each do |category|
         describe category.slug do
-          subject { Portfolio::Data.new.find_by_slug(category.slug) }
+          subject { Portfolio::Data.new.find_category_by_slug(category.slug) }
 
           its(:title) { should == category.title }
         end
