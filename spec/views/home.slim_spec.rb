@@ -2,9 +2,11 @@ require 'spec_helper'
 
 describe 'home.slim' do
   let(:category) { mock 'Category', :title => 'Category Title', :slug => 'category_slug' }
-  let(:categories) { [category] }
+  let(:photo) { mock 'Photo', :src => 'http://src', :id => 'my_photo' }
 
-  subject { render 'home.slim', :@categories => categories }
+  subject { render 'home.slim', :@categories => [category], :@photos => [photo] }
 
   it { should include %Q{<a href="/category/#{category.slug}">#{category.title}</a>} }
+  it { should include %Q{<a href="/#{photo.id}">} }
+  it { should include %Q{<img id="#{photo.id}" src="#{photo.src}" />} }
 end
