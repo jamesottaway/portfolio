@@ -11,7 +11,11 @@ Given /^I have a photo$/ do
 end
 
 Then /^I should see my photos$/ do
-    pending
+  on(:home) { |page|
+    5.times { |i|
+      page.photo_for_id("photo_#{i}").should exist
+    }
+  }
 end
 
 Then /^I should see my photo$/ do
