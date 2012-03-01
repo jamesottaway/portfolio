@@ -1,6 +1,4 @@
 language: ruby
-before_script:
-- sh -e /etc/init.d/xvfb start
-- rvm install 1.9.2-p290
-- rvm use 1.9.2-p290
+rvm: 1.9.2-p290
+before_script: sh -e /etc/init.d/xvfb start
 env: DISPLAY=:99.0
