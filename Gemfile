@@ -2,8 +2,9 @@ source :rubygems
 
 gem 'sinatra'
 gem 'slim'
+gem 'jamesottaway'
 
-group :developmen do
+group :development do
   gem 'rake'
   gem 'rspec'
   gem 'cucumber'

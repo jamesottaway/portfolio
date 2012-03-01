@@ -4,6 +4,7 @@ require 'yaml'
 require 'portfolio'
 require 'portfolio/photo'
 require 'portfolio/category'
+require 'jamesottaway/helpers'
 
 class Portfolio::Data
   attr_accessor :photos, :categories
@@ -27,6 +28,10 @@ class Portfolio::Data
 
   def find_photos_by_category category
     photos.select { |photo| photo.category == category }
+  end
+
+  def random_photos
+    photos.randomly_pick(5)
   end
 
   def find_category_by_slug slug
