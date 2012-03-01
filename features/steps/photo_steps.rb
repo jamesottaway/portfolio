@@ -1,5 +1,7 @@
 Given /^I have a bunch of photos$/ do
-    pending
+    photos = 5.times.map { |i| {'title' => 'My Photo', 'src' => 'http://portfolio/my_photo', 'id' => "photo_#{i}", 'category' => 'Scenic'} }
+    @portfolio = {'photos' => photos}
+    File.open('portfolio.yml', 'w') { |f| f.write(@portfolio.to_yaml) }
 end
 
 Given /^I have a photo$/ do
