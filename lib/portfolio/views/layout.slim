@@ -3,4 +3,7 @@ html
   head
     title = @title || 'James Ottaway'
   body
+    nav id='categories'
+      - for category in @categories
+        a href="/category/#{category.slug}" = category.title
     == yield
