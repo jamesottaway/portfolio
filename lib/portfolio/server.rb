@@ -12,7 +12,7 @@ class Portfolio::Server < Sinatra::Base
   get '/' do
     data = Portfolio::Data.new
     @categories = data.categories
-    @photos = data.random_photos
+    @photos = data.photos
     slim :home
   end
 

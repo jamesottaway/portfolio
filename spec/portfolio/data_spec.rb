@@ -49,16 +49,6 @@ describe Portfolio::Data do
         end
       end
     end
-
-    describe '#random_photos' do
-      before { YAML.stub(:load_file).with('portfolio.yml').and_return({ 'photos' => 100.times.map { |i| {'title' => "#{i}", 'src' => "#{i}", 'id' => "#{i}", 'category' => "#{i}"} } }) }
-
-      subject { Portfolio::Data.new.random_photos }
-      let(:other_random) { Portfolio::Data.new.random_photos }
-
-      its(:size) { should == 5 }
-      it { should_not == other_random }
-    end
   end
 
   describe 'category-related methods ' do

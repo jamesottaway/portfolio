@@ -12,8 +12,8 @@ end
 
 Then /^I should see my photos$/ do
   on(:home) { |page|
-    5.times { |i|
-      page.photo_for_id("photo_#{i}").should exist
+    @portfolio['photos'].each { |photo|
+      page.photo_for_id(photo['id']).should exist
     }
   }
 end

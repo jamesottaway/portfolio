@@ -30,10 +30,6 @@ class Portfolio::Data
     photos.select { |photo| photo.category == category }
   end
 
-  def random_photos
-    photos.randomly_pick(5)
-  end
-
   def find_category_by_slug slug
     categories.select { |category| category.slug == slug }.first
   end
