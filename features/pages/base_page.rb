@@ -12,6 +12,10 @@ class BasePage
     img(:id => id)
   end
 
+  def photo_article_for_id id
+    article(:id => id)
+  end
+
   def method_missing sym, *args, &block
     @browser.send sym, *args, &block
   end

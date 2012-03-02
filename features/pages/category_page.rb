@@ -1,3 +1,3 @@
 class CategoryPage < BasePage
-	h1 :title, :id => 'title'
+	h2(:title) { |page| page.section(:class => 'category').h2 }
 end

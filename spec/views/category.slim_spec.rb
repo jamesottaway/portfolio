@@ -6,7 +6,12 @@ describe 'category.slim' do
 
   subject { render 'category.slim', :@category => category, :@photos => [photo] }
 
-  it { should include %Q{<h1 id="title">#{category.title}</h1>} }
-  it { should include %Q{<img id="#{photo.id}" src="#{photo.thumb}" />} }
-  it { should include %Q{<a href="/#{photo.id}">#{photo.title}</a>} }
+  it { should include %Q{<section class="category" id="#{category.slug}">} }
+  it { should include %Q{<h2>#{category.title}</h2>} }
+  it { should include %Q{<section id="photos">} }
+  it { should include %Q{<article class="photo" id="#{photo.id}">} }
+  it { should include %Q{<h3><a href="/#{photo.id}">#{photo.title}</a></h3>} }
+  it { should include %Q{<a href="/#{photo.id}"><img src="#{photo.thumb}" /></a>} }
+  it { should include %Q{</article>} }
+  it { should include %Q{</section>} }
 end

@@ -1,5 +1,10 @@
-h1(id='title') = @category.title
-
-- for photo in @photos
-  img id=photo.id src==photo.thumb
-  a href="/#{photo.id}" = photo.title
+section id=@category.slug class='category'
+  h2 = @category.title
+  section id='photos'
+    h3 Photos
+    - for photo in @photos
+      article id=photo.id class='photo'
+        h3
+          a href="/#{photo.id}" = photo.title
+        a href="/#{photo.id}"
+          img src==photo.thumb

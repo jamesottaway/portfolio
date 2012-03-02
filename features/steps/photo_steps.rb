@@ -30,7 +30,7 @@ end
 Then /^I should see the photo thumbnails in the category$/ do
   on(:category) do |page|
     photos_for_category(@photo['category']).each do |photo|
-      page.photo_for_id(photo['id']).src.should == photo['thumb']
+      page.photo_article_for_id(photo['id']).img.src.should == photo['thumb']
     end
   end
 end
