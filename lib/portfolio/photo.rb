@@ -1,6 +1,6 @@
 $: << File.dirname(__FILE__)+'/..'
 
-require 'portfolio'
+module Portfolio;end
 
 class Portfolio::Photo < Struct.new(:title, :src, :thumb, :id, :category)
 end

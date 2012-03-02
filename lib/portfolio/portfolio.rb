@@ -5,7 +5,7 @@ require 'portfolio'
 require 'portfolio/photo'
 require 'portfolio/category'
 
-class Portfolio::Data
+class Portfolio::Portfolio
   attr_accessor :photos, :categories
 
   def initialize
