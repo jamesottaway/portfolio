@@ -3,7 +3,6 @@ Feature:
   I want an online portfolio
   So I can sell my photos
 
-  @wip
   Scenario:
     Given I have a bunch of photos
     When I visit the home page
