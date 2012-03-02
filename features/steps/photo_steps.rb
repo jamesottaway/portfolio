@@ -10,10 +10,11 @@ Given /^I have a photo$/ do
     File.open('portfolio.yml', 'w') { |f| f.write(@portfolio.to_yaml) }
 end
 
-Then /^I should see my photos$/ do
+Then /^I should see my photo thumbnails$/ do
   on(:home) { |page|
     @portfolio['photos'].each { |photo|
       page.photo_for_id(photo['id']).should exist
+      page.photo_for_id(photo['id']).src.should == photo['thumb']
     }
   }
 end
@@ -26,10 +27,10 @@ Then /^I should see my photo$/ do
   end
 end
 
-Then /^I should see the photos in the category$/ do
+Then /^I should see the photo thumbnails in the category$/ do
   on(:category) do |page|
     photos_for_category(@photo['category']).each do |photo|
-      page.photo_for_id(photo['id']).src.should == photo['src']
+      page.photo_for_id(photo['id']).src.should == photo['thumb']
     end
   end
 end
