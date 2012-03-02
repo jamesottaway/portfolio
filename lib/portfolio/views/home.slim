@@ -1,8 +1,12 @@
-li
+nav
   - for category in @categories
     a href="/category/#{category.slug}" = category.title
 
-li
+section id='photos'
+  h2 Photos
   - for photo in @photos
-    a href="/#{photo.id}"
-      img src==photo.thumb id=photo.id
+    article class='photo' id=photo.id
+      h3
+        a href="/#{photo.id}" = photo.title
+      a href="/#{photo.id}"
+        img src==photo.thumb

@@ -13,8 +13,8 @@ end
 Then /^I should see my photo thumbnails$/ do
   on(:home) { |page|
     @portfolio['photos'].each { |photo|
-      page.photo_for_id(photo['id']).should exist
-      page.photo_for_id(photo['id']).src.should == photo['thumb']
+      page.photo_article_for_id(photo['id']).should exist
+      page.photo_article_for_id(photo['id']).img.src.should == photo['thumb']
     }
   }
 end
