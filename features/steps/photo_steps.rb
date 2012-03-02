@@ -1,11 +1,11 @@
 Given /^I have a bunch of photos$/ do
-    photos = 5.times.map { |i| {'title' => 'My Photo', 'src' => 'http://portfolio/my_photo', 'id' => "photo_#{i}", 'category' => 'Scenic'} }
+    photos = 5.times.map { |i| {'title' => 'My Photo', 'src' => 'http://portfolio/my_photo', 'thumb' => 'http://portfolio/thumb', 'id' => "photo_#{i}", 'category' => 'Scenic'} }
     @portfolio = {'photos' => photos}
     File.open('portfolio.yml', 'w') { |f| f.write(@portfolio.to_yaml) }
 end
 
 Given /^I have a photo$/ do
-    @photo = {'title' => 'My Photo', 'src' => 'http://portfolio/my_photo', 'id' => 'my_photo', 'category' => 'Scenic'}
+    @photo = {'title' => 'My Photo', 'src' => 'http://portfolio/my_photo', 'thumb' => 'http://portfolio/thumb', 'id' => 'my_photo', 'category' => 'Scenic'}
     @portfolio = {'photos' => [@photo]}
     File.open('portfolio.yml', 'w') { |f| f.write(@portfolio.to_yaml) }
 end

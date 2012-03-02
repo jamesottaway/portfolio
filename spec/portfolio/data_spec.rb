@@ -1,10 +1,9 @@
 require 'spec_helper'
 
 describe Portfolio::Data do
-  first_photo = {'title' => 'First Photo', 'src' => 'photo_src_1', 'id' => 'photo_1', 'category' => 'Scenic'}
-  second_photo = {'title' => 'Second Photo', 'src' => 'photo_src_2', 'id' => 'photo_2', 'category' => 'Scenic'}
-  other_photo = {'title' => 'Other Photo', 'src' => 'photo_src_other', 'id' => 'photo_other', 'category' => 'Other'}
-  empty_photo = {'title' => '', 'src' => '', 'id' => '', 'category' => ''}
+  first_photo = {'title' => 'First Photo', 'src' => 'photo_src_1', 'thumb' => 'thumb_1', 'id' => 'photo_1', 'category' => 'Scenic'}
+  second_photo = {'title' => 'Second Photo', 'src' => 'photo_src_2', 'thumb' => 'thumb_2', 'id' => 'photo_2', 'category' => 'Scenic'}
+  other_photo = {'title' => 'Other Photo', 'src' => 'photo_src_other', 'thumb' => 'thumb_3', 'id' => 'photo_other', 'category' => 'Other'}
 
   photos = { 'photos' => [first_photo, second_photo, other_photo] }
 
