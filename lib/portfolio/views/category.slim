@@ -1,5 +1,5 @@
 h1(id='title') = @category.title
 
 - for photo in @photos
-  img id=photo.id src==photo.src
+  img id=photo.id src==photo.thumb
   a href="/#{photo.id}" = photo.title
