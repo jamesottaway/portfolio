@@ -23,6 +23,7 @@ describe Portfolio::Data do
 
           its(:title) { should == photo['title'] }
           its(:src) { should == photo['src'] }
+          its(:thumb) { should == photo['thumb'] }
           its(:id) { should == photo['id'] }
           its(:category) { should == photo['category'] }
         end

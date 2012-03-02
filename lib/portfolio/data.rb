@@ -4,7 +4,6 @@ require 'yaml'
 require 'portfolio'
 require 'portfolio/photo'
 require 'portfolio/category'
-require 'jamesottaway/helpers'
 
 class Portfolio::Data
   attr_accessor :photos, :categories
@@ -13,7 +12,7 @@ class Portfolio::Data
     yaml = YAML.load_file('portfolio.yml')
     self.photos = []
     yaml['photos'].each do |photo|
-      self.photos << Portfolio::Photo.new(photo['title'], photo['src'], photo['id'], photo['category'])
+      self.photos << Portfolio::Photo.new(photo['title'], photo['src'], photo['thumb'], photo['id'], photo['category'])
     end
     self.categories = []
     yaml['photos'].each do |photo|
