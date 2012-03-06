@@ -16,7 +16,9 @@ World JamesOttaway::Matchers
 World WatirPageHelper::Commands
 
 WatirPageHelper.create
+system 'mv portfolio.yml tmp/'
 
 at_exit do
   WatirPageHelper.close
+  system 'mv tmp/portfolio.yml .'
 end
