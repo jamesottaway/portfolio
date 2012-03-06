@@ -3,6 +3,6 @@ class HomePage < BasePage
   expected_title 'James Ottaway'
 
   def visit_category category_name
-    link(:text => category_name).click
-  end
+    browser.link(:text => category_name).click
+  end	
 end

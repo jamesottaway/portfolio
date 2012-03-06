@@ -11,7 +11,7 @@ Given /^I have a photo$/ do
 end
 
 Then /^I should see my photo thumbnails$/ do
-  on(:home) { |page|
+  on(HomePage) { |page|
     @portfolio['photos'].each { |photo|
       page.photo_article_for_id(photo['id']).should exist
       page.photo_article_for_id(photo['id']).img.src.should == photo['thumb']
@@ -20,7 +20,7 @@ Then /^I should see my photo thumbnails$/ do
 end
 
 Then /^I should see my photo$/ do
-  on(:photo) do |page|
+  on(PhotoPage) do |page|
     browser.title.should start_with @photo['title']
     page.title.should == @photo['title']
     page.photo.src.should == @photo['src']
@@ -28,7 +28,7 @@ Then /^I should see my photo$/ do
 end
 
 Then /^I should see the photo thumbnails in the category$/ do
-  on(:category) do |page|
+  on(CategoryPage) do |page|
     photos_for_category(@photo['category']).each do |photo|
       page.photo_article_for_id(photo['id']).img.src.should == photo['thumb']
     end

@@ -1,5 +1,5 @@
 When /^I visit the home page$/ do
-    visit :home
+    visit HomePage
 end
 
 When /^I view that photo$/ do
@@ -7,10 +7,10 @@ When /^I view that photo$/ do
 end
 
 When /^I navigate to a category$/ do
-    on :home do |page|
+    on HomePage do |page|
     	page.visit_category @photo['category']
     end
-    on(:category) do |page|
+    on(CategoryPage) do |page|
     	browser.title.should == @photo['category']
     	page.title.should == @photo['category']
     end

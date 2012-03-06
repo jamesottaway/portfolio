@@ -1,46 +1,22 @@
+$: << File.dirname(__FILE__)
+$: << File.dirname(__FILE__)+'/../watir-page-helper'
+
 WEB_DRIVER = (ENV['WEB_DRIVER'] || :firefox).to_sym
 
-require 'watir-webdriver'
-require 'watir-page-helper'
 require 'pry'
 require 'jamesottaway/matchers'
-require_relative 'pages'
+require 'watir-webdriver'
+require 'watir-page-helper'
+require 'watir-page-helper/commands'
+require 'acceptance'
+require 'pages'
 
-module Browser
-  BROWSER = Watir::Browser.new WEB_DRIVER
-
-  def visit page_class, &block
-    on page_class, true, &block
-  end
-
-  def on page, visit=false, &block
-    page_class = Object.const_get "#{page.to_s.split('_').map(&:capitalize).join}Page"
-    page = page_class.new BROWSER, visit
-    block.call page if block
-    page
-  end
-
-  def photo_url id
-    "http://localhost:9292/#{id}"
-  end
-
-  def goto url
-    BROWSER.goto(url)
-    raise 'Page Not Found' if BROWSER.body.text == 'Not Found'
-  end
-
-  def photos_for_category category
-    @portfolio['photos'].select { |photo| photo['category'] == category }
-  end
-
-  def browser
-    BROWSER
-  end
-end
-
-World Browser
+World Portfolio::Acceptance
 World JamesOttaway::Matchers
+World WatirPageHelper::Commands
+
+WatirPageHelper.create
 
 at_exit do
-  Browser::BROWSER.close
+  WatirPageHelper.close
 end
