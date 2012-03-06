@@ -1,5 +1,4 @@
 $: << File.dirname(__FILE__)
-$: << File.dirname(__FILE__)+'/../watir-page-helper'
 
 WEB_DRIVER = (ENV['WEB_DRIVER'] || :firefox).to_sym
 
