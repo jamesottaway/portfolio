@@ -3,6 +3,7 @@ WEB_DRIVER = (ENV['WEB_DRIVER'] || :firefox).to_sym
 require 'watir-webdriver'
 require 'watir-page-helper'
 require 'pry'
+require 'jamesottaway/matchers'
 require_relative 'pages'
 
 module Browser
@@ -38,6 +39,7 @@ module Browser
 end
 
 World Browser
+World JamesOttaway::Matchers
 
 at_exit do
   Browser::BROWSER.close
