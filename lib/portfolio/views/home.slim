@@ -1,8 +1,7 @@
-section id='photos'
-  h2 Photos
+ul class='thumbnails'
   - for photo in @photos
-    article class='photo' id=photo.id
-      h3
+    li class='thumbnail' id=photo.id
+      h5
         a href="/#{photo.id}" = photo.title
       a href="/#{photo.id}"
         img src==photo.thumb

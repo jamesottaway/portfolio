@@ -3,11 +3,7 @@ body {
 	color: white;
 }
 
-section#photos {
-	width: 1000px;
-}
-
-section#photos > article.photo {
+ul.thumbnails > li.thumbnail {
 	float: left;
 	width: 250px;
 	height: 300px;

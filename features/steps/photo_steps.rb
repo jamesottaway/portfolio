@@ -13,8 +13,8 @@ end
 Then /^I should see my photo thumbnails$/ do
   on(HomePage) { |page|
     @portfolio['photos'].each { |photo|
-      page.photo_article_for_id(photo['id']).should exist
-      page.photo_article_for_id(photo['id']).img.src.should == photo['thumb']
+      page.photo_for_id(photo['id']).should exist
+      page.photo_for_id(photo['id']).img.src.should == photo['thumb']
     }
   }
 end
@@ -30,7 +30,7 @@ end
 Then /^I should see the photo thumbnails in the category$/ do
   on(CategoryPage) do |page|
     photos_for_category(@photo['category']).each do |photo|
-      page.photo_article_for_id(photo['id']).img.src.should == photo['thumb']
+      page.photo_for_id(photo['id']).img.src.should == photo['thumb']
     end
   end
 end

@@ -1,3 +1,3 @@
 class CategoryPage < BasePage
-	h2(:title) { browser.section(:class => 'category').h2 }
+	h2 :title, id: 'title'
 end

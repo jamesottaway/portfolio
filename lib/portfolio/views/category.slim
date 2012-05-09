@@ -1,10 +1,8 @@
-section id=@category.slug class='category'
-  h2 = @category.title
-  section id='photos'
-    h3 Photos
-    - for photo in @photos
-      article id=photo.id class='photo'
-        h3
-          a href="/#{photo.id}" = photo.title
-        a href="/#{photo.id}"
-          img src==photo.thumb
+h2 id='title' = @category.title
+ul class='thumbnails' id=@category.slug 
+  - for photo in @photos
+    li class='thumbnail' id=photo.id
+      h5
+        a href="/#{photo.id}" = photo.title
+      a href="/#{photo.id}"
+        img src==photo.thumb
