@@ -6,9 +6,8 @@ describe 'photo.slim' do
   subject { render 'layout.slim', { :@categories => [category] } }
 
   it { should include %Q{<title>James Ottaway</title>} }
-  it { should include %Q{<nav id="categories">} }
+  it { should include %Q{<ul class="nav nav-tabs" id="categories">} }
   it { should include %Q{<a href="/category/#{category.slug}">#{category.title}</a>} }
-  it { should include %Q{</nav>} }
 
   describe 'custom title' do
   	let(:title) { 'Custom Title' }

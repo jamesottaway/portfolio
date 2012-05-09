@@ -6,7 +6,8 @@ html
     link href='/css/bootstrap-responsive.css' type='text/css' rel='stylesheet'
     link href='/css/portfolio.css' type='text/css' rel='stylesheet'
   body
-    nav id='categories'
+    ul class='nav nav-tabs' id='categories'
       - for category in @categories
-        a href="/category/#{category.slug}" = category.title
+        li
+          a href="/category/#{category.slug}" = category.title
     == yield
