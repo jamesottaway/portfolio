@@ -1,30 +1,30 @@
 $: << File.dirname(__FILE__)+'/..'
 
-require 'portfolio'
+module Portfolio
+	class Category
+		attr_accessor :title, :slug
 
-class Portfolio::Category
-	attr_accessor :title, :slug
+		def initialize title
+			self.title = title
+			self.slug = to_slug(title)
+		end
 
-	def initialize title
-		self.title = title
-		self.slug = to_slug(title)
-	end
+		def hash
+			self.title.hash
+		end
 
-	def hash
-		self.title.hash
-	end
+		def eql? other
+			self.title == other.title
+		end
 
-	def eql? other
-		self.title == other.title
-	end
+		def == other
+			eql? other
+		end
 
-	def == other
-		eql? other
-	end
+		private
 
-	private
-
-	def to_slug title
-		title.downcase.gsub(' ', '_')
+		def to_slug title
+			title.downcase.gsub(' ', '_')
+		end
 	end
 end
