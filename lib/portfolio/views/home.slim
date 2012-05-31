@@ -1,7 +1,0 @@
-ul class='thumbnails'
-  - for photo in @photos
-    li class='thumbnail' id=photo.id
-      h5
-        a href="/#{photo.id}" = photo.title
-      a href="/#{photo.id}"
-        img src==photo.thumb
