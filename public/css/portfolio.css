@@ -1,11 +1,51 @@
-body {
-	background-color: black;
+html {
+	font-family: 'Varela', sans-serif;
 	color: white;
+	background: black;
+	height: 100%;
 }
 
-ul.thumbnails > li.thumbnail {
+body {	
+	margin: 0px;
+	height: 100%;
+}
+
+#header {
+	width: 100%;
+	height: 100px;
+}
+
+#header h1 {
 	float: left;
-	width: 250px;
-	height: 300px;
-	text-align: center;
+}
+
+h1 {
+	margin: 0px;
+}
+
+#header ul {
+	float: right;
+	display: inline;
+}
+
+#header ul li {
+	display: inline;
+}
+
+#container {
+	min-height: 100%;
+	height: auto;
+}
+
+#photo {
+	overflow: auto;
+	padding-bottom: 1.5em;
+}
+
+#footer {
+	position: relative;
+	margin-top: -1.5em;
+	height: 1.5em;
+	clear: both;
+	text-align: right;
 }
