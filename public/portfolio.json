@@ -1,5 +1,5 @@
 init({"photos" : [
-		{ "title" : "Tamborine Rainforest", "src" : "one.jpg", "bg" : "one_bg.jpg" },
-		{ "title" : "Fingal Head Lighthouse", "src" : "two.jpg", "bg" : "two_bg.jpg" }
+		{ "title" : "Tamborine Rainforest", "src" : "0515.jpg", "bg" : "0515_.jpg" },
+		{ "title" : "Fingal Head Lighthouse", "src" : "165319.jpg", "bg" : "165319_.jpg" }
 	]
 });
