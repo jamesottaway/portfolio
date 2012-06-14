@@ -5,11 +5,25 @@ var init = function(json) {
 }
 
 $(function() {
-	var photo = $('#photo');
-	var img = photo.children('img');
-	photo.css('background-image', 'url(/images/' + portfolio.photos[0].bg + ')');
-	img.attr('src', '/images/' + portfolio.photos[0].src);
-	img.load(function() {
-		$(this).css('padding-top', (photo.height() - img.height()) / 2);
+	var show = function(photo) {	
+		$('#photo').css('background-image', 'url(/images/' + photo.bg + ')');
+		$('#photo > img').attr('src', '/images/' + photo.src);
+		$('#photo > img').load(function() {
+			$(this).css('padding-top', ($('#photo').height() - $('#photo > img').height()) / 2);
+		});
+	}
+
+	var id = 0;
+
+	show(portfolio.photos[id]);
+
+	$('#photo > img').click(function() {
+		if (id == '0') 
+			id = 1;
+		else
+			id = 0;
+
+		show(portfolio.photos[id]);
 	});
 });
+
