@@ -16,19 +16,21 @@ var show = function(photo, callback) {
   });
 }
 
-var wireClick = function() {
-  $('#photo > img').click(function() {
-    if (id == '0') 
-      id = 1;
-    else
-      id = 0;
+var togglePhoto = function() {
+  if (id == '0') 
+    id = 1;
+  else
+    id = 0;
 
-    fade(function() {
-      show(portfolio.photos[id], function() {
-        fade();
-      });
-    });
-  });
+  fade(
+    function() { show(portfolio.photos[id],
+      function() { fade(); }
+    )}
+  );
+}
+
+var wireClick = function() {
+  $('#photo > img').click(togglePhoto);
 }
 
 var fade = function(callback) {
